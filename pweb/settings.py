@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)u61^c&ldq46xary5$p%=jyl)b782@z)g@&qb3a2s^v_+)^g7x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','piloto-wine.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1','.vercel.app']
 
 
 # Application definition
