@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal</title>
-</head>
-<body>
-    <a href="{% url 'index' %}">Home</a>
-    <a href="{% url 'sobre' %}">Sobre</a>
-    <a href="{% url 'contato' %}">Contato</a>
-    <h1>Página Principal</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block titulo %} Home {% endblock %}
+
+{% block conteudo %}
+
+    <h1>Bem-vindo ao nosso Sistema Web!!</h1>
+
+    <a href="cadweb">CADWEB</a>
+
+{% endblock %}
