@@ -52,20 +52,23 @@ def produtos(request):
     return render(request, 'produto/lista.html', contexto)
 
 def form_produto(request):
-    print("Método da requisição:", request.method)  # Depuração
     if request.method == "POST":
         form = ProdutoForm(request.POST)
-        print("Dados enviados:", request.POST)  # Depuração
         if form.is_valid():
-            print("Formulário válido!")  # Depuração
+            # Pegando os dados do formulário
             nome = form.cleaned_data['nome']
             preco = form.cleaned_data['preco']
+            
+            # Gerando um ID automático
             novo_id = len(produtos_lista) + 1
+            
+            # Adicionando o produto à lista
             produtos_lista.append({'id': novo_id, 'nome': nome, 'preco': preco})
+            
+            # Redirecionando para a página de listagem
             return redirect('produtos')
-        else:
-            print("Formulário inválido:", form.errors)  # Depuração
     else:
         form = ProdutoForm()
+    
     contexto = {'form': form}
     return render(request, 'produto/form_produto.html', contexto)
