@@ -3,6 +3,11 @@
 {% block titulo_page %} Listagem de Produtos {% endblock titulo_page %}
 
 {% block conteudo %}
+
+<button class="btn btn-primary" onclick="location.href='{% url 'form_produto' %}'">Novo Produto</button>
+
+<p></p>
+
 <table class="table table-bordered table-hover">
     <thead class="thead-dark">
         <tr>

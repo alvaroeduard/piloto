@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 from django.http import HttpResponse
+
+from .forms import ContatoForm, ProdutoForm
 
 def index(request):
     return render(request,'index.html')
@@ -10,7 +12,11 @@ def sobre(request):
     return render(request,'sobre.html')
 
 def contato(request):
-    return render(request,'contato.html')
+    form = ContatoForm()
+    contexto = {
+        'form': form,
+    }
+    return render(request, 'contato.html', contexto)
 
 def exibir_item(request, id):
     return render(request, "exibir_item.html", {'id':id})
@@ -33,22 +39,33 @@ def diadasemana(request, dia):
     else:
         return HttpResponse("Dia inválido")
     
+produtos_lista = [
+    {'id': 1, 'nome': 'Notebook', 'preco': '2.500,00'},
+    {'id': 2, 'nome': 'Monitor', 'preco': '500,00'},
+    {'id': 3, 'nome': 'Teclado', 'preco': '80,00'},
+]
+
 def produtos(request):
     contexto = {
-        'lista': [
-            {'id': 1, 'nome': 'Notebook', 'preco': '2.500,00'},
-            {'id': 2, 'nome': 'Monitor', 'preco': '500,00'},
-            {'id': 3, 'nome': 'Teclado', 'preco': '80,00'},
-            {'id': 4, 'nome': 'Mouse', 'preco': '40,00'},
-            {'id': 5, 'nome': 'Impressora', 'preco': '600,00'},
-            {'id': 6, 'nome': 'Scanner', 'preco': '700,00'},
-            {'id': 7, 'nome': 'Câmera Web', 'preco': '150,00'},
-            {'id': 8, 'nome': 'Headset', 'preco': '120,00'},
-            {'id': 9, 'nome': 'Pendrive 32GB', 'preco': '30,00'},
-            {'id': 10, 'nome': 'HD Externo 1TB', 'preco': '350,00'},
-            {'id': 11, 'nome': 'Estabilizador', 'preco': '200,00'},
-            {'id': 12, 'nome': 'Switch 8 portas', 'preco': '180,00'},
-            {'id': 13, 'nome': 'Roteador Wi-Fi', 'preco': '220,00'},
-        ],
+        'lista': produtos_lista,
     }
-    return render(request, 'produto/lista.html',contexto)
+    return render(request, 'produto/lista.html', contexto)
+
+def form_produto(request):
+    print("Método da requisição:", request.method)  # Depuração
+    if request.method == "POST":
+        form = ProdutoForm(request.POST)
+        print("Dados enviados:", request.POST)  # Depuração
+        if form.is_valid():
+            print("Formulário válido!")  # Depuração
+            nome = form.cleaned_data['nome']
+            preco = form.cleaned_data['preco']
+            novo_id = len(produtos_lista) + 1
+            produtos_lista.append({'id': novo_id, 'nome': nome, 'preco': preco})
+            return redirect('produtos')
+        else:
+            print("Formulário inválido:", form.errors)  # Depuração
+    else:
+        form = ProdutoForm()
+    contexto = {'form': form}
+    return render(request, 'produto/form_produto.html', contexto)

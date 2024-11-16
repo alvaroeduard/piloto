@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
-{% block titulo_page %} Contato {% endblock titulo_page %}
+{% block titulo  %} Contato {% endblock %}
 
-{% block cards %}
-{% endblock cards %}
+{% block titulo_page  %} Contato {% endblock %}
 
-{% block conteudo %}
-    Entre em contato conosco: contato@example.com
-{% endblock conteudo %}
+{% block conteudo  %}  
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }} 
+        <button class="btn btn-primary">Enviar</button>
+    </form>
+
+{% endblock %}

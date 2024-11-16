@@ -9,6 +9,7 @@ urlpatterns = [
     path('perfil/<str:usuario>/', views.perfil, name='perfil'),
     path('diadasemana/<int:dia>/', views.diadasemana, name='diadasemana'),
     path('produtos/', views.produtos, name='produtos'),
+    path('produtos/form', views.form_produto, name='form_produto'),
     
 
 ]
