@@ -1,18 +1,22 @@
+
 <ul class="nav flex-column">
     <li class="nav-item">
-        <a href="#" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a>
+        <a href="{% url 'index' %}" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a>
     </li>
     <li class="nav-item">
-        <a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> <span>Charts</span></a>
+        <a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> <span>Views</span></a>
         <ul class="submenu nav flex-column">
             <li class="nav-item">
-                <a href="#" class="nav-link">Bar Chart</a>
+                <a href="{% url 'contato' %}" class="nav-link">Contato</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Pie Chart</a>
+                <a href="{% url 'sobre' %}" class="nav-link">Sobre</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">Line Chart</a>
+                <a href="{% url 'exibir_item' 10 %}" class="nav-link">Item</a>
+            </li>            
+            <li class="nav-item">
+                <a href="{% url 'produtos' %}" class="nav-link">Produtos</a>
             </li>
         </ul>
     </li>
@@ -20,7 +24,7 @@
         <a href="#" class="nav-link"><i class="fas fa-users"></i> <span>Users</span></a>
         <ul class="submenu nav flex-column">
             <li class="nav-item">
-                <a href="#" class="nav-link">User List</a>
+                <a href="#" class="nav-link">Usuario Alvaro</a>
             </li>
             <li class="nav-item">
                 <a href="#" class="nav-link">Add User</a>

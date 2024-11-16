@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo_page %} Listagem de Produtos {% endblock titulo_page %}
+
+{% block conteudo %}
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Valor (R$)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in lista %}
+        <tr>
+            <td> {{item.id}}</td>
+            <td> {{item.nome}}</td>
+            <td>{{item.preco}}</td>
+        </tr>
+        {% endfor %}
+      
+    </tbody>
+</table>
+
+{% endblock conteudo %}

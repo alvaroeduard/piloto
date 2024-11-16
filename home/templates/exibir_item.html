@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
-{% block titulo %} Detalhes do Item {% endblock %}
+{% block titulo_page %} Exibir Item {% endblock titulo_page %}
+
+{% block cards %}
+{% endblock cards %}
 
 {% block conteudo %}
-
-    <h1>Você está visualizando o item com ID{{id}}</h1>
-
-{% endblock %}
+    <h1>Você está visualizando o item com ID: {{id}}</h1>
+{% endblock conteudo %}
